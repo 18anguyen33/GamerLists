@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'categories.dart';
-import 'package:mobx/mobx.dart';
 import 'dart:async';
 
 
@@ -13,7 +12,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomeState extends State<HomePage> {
-  @observable
   List categoryList = [];
   _HomeState(){
     FirebaseDatabase.instance.reference().child("0/main").once()

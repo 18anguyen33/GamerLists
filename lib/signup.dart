@@ -108,9 +108,9 @@ class _SignUpState extends State<SignUpPage> {
                     margin: EdgeInsets.only(left: 10, right:10),
                     width:372,
                     child: OutlineButton(
-                      onPressed: (){
+                      onPressed: () async {
                         print(emailController.text);
-                        FirebaseAuth.instance.createUserWithEmailAndPassword(
+                        await FirebaseAuth.instance.createUserWithEmailAndPassword(
                             email: emailController.text, password: passwordController.text)
                             .then((value) {
                                 print("Sign Up Successful");

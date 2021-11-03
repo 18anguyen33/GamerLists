@@ -68,8 +68,8 @@ class _LoginState extends State<LoginPage> {
                 margin: EdgeInsets.only(left: 10, right:10),
                 width:180,
                 child: OutlineButton(
-                  onPressed: (){
-                    FirebaseAuth.instance.signInWithEmailAndPassword(
+                  onPressed: () async{
+                    await FirebaseAuth.instance.signInWithEmailAndPassword(
                         email: emailController.text, password: passwordController.text)
                         .then((value) {
                           print("Sign In Successful");
