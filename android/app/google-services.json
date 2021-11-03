@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "826651069867",
+    "project_id": "game-list-f6866",
+    "storage_bucket": "game-list-f6866.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826651069867:android:41eca3a4ee4eca2f5416ee",
+        "android_client_info": {
+          "package_name": "com.example.gamer_lists"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "826651069867-203vvib8bau11490uc89eb20tn5trm1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7wJA-mOz2FR-ZG97dBzbZHezUfhY3pCk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "826651069867-203vvib8bau11490uc89eb20tn5trm1j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
