@@ -1,41 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:gamer_lists/reset.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'login.dart';
-import 'signup.dart';
-import 'home.dart';
+import 'main.dart';
+import 'startquestionaire.dart';
 
-void main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Gamer List Login'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+class ForgotPasswordPage extends StatefulWidget {
+  ForgotPasswordPage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _ForgotPasswordState createState() => _ForgotPasswordState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ForgotPasswordState extends State<ForgotPasswordPage> {
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -45,18 +27,13 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
 
         child: Column(
+
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              width:3900,
-              height:290,
-              child: Image(
-                  image: AssetImage('images/Logo.jpg')
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(bottom:10),
+              margin: EdgeInsets.all(10),
               child: Text(
-                'Welcome to Gamer Lists',
+                  'Forgot Password',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.notoSerif(
                   fontWeight: FontWeight.w700,
@@ -67,18 +44,38 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Container(
+                margin: EdgeInsets.only(left: 10, right:10),
+                height:35,
+                child: TextField(
+                  controller: emailController,
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Email',
+                  ),style: GoogleFonts.notoSerif(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20,
+                  fontStyle: FontStyle.normal,
+                ),
+                )
+            ),
+            Container(
               margin: EdgeInsets.only(left: 10, right:10),
               width:380,
               child: OutlinedButton(
                 onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginPage(title: 'User Login')),
-                  );
+                  FirebaseAuth.instance.sendPasswordResetEmail(email:emailController.text).then((value){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ResetPage(title: '')),
+                    );
+                  }).catchError((error) {
+                    print("Password Reset Failed");
+                    print(error.toString());
+                  });
                 },
                 child: Text(
-                    'Login',
-                  textAlign: TextAlign.center,
+                  'Submit Email',
                   style: GoogleFonts.notoSerif(
                     fontWeight: FontWeight.w700,
                     fontSize: 20,
@@ -101,12 +98,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: (){
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => SignUpPage(title: 'Create Account')),
+                    MaterialPageRoute(builder: (context) => LoginPage(title: '')),
                   );
                 },
                 child: Text(
-                    'Sign Up',
-                  textAlign: TextAlign.center,
+                  'Back',
                   style: GoogleFonts.notoSerif(
                     fontWeight: FontWeight.w700,
                     fontSize: 20,

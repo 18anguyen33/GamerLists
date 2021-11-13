@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'forgotpassword.dart';
 import 'startquestionaire.dart';
 import 'personalinfo.dart';
 
@@ -14,51 +16,86 @@ class _SettingsState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Container(
-              margin: EdgeInsets.all(10),
-              child: OutlineButton(
-                onPressed: (){
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PersonalInfoPage(title: 'Personal User Information')),
-                  );
-                },
-                child: Text(
-                  'Modify Personal User Information',
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
+              margin: EdgeInsets.only(top:20, bottom: 10, right: 5, left: 5),
+              child: Text(
+                "Account Page",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.notoSerif(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 40,
+                  fontStyle: FontStyle.normal,
+                  color: Colors.blue[700],
                 ),
-              ),
-            ),
-            Container(
-                margin: EdgeInsets.only(left: 10, right:10),
-                height:35,
-                child: OutlineButton(
-                  onPressed: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => QuestionPage(title: 'Questionnaire')),
-                    );
-                  },
-                  child: Text(
-                    'Retake User Questionnaire',
-                    style: TextStyle(
-                      fontSize: 15,
+              )
+          ),
+          Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 10, bottom: 10,left: 10, right:10),
+                  width: 400,
+                  child: OutlinedButton(
+                    onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ForgotPasswordPage(title: '')),
+                      );
+                    },
+                    child: Text(
+                      'Change Password',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.notoSerif(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20,
+                        fontStyle: FontStyle.normal,
+                      ),
                     ),
+                    style: OutlinedButton.styleFrom(
+                      primary: Colors.blueGrey[800],
+                      side: BorderSide(
+                          color: Colors.blueGrey,
+                      ),
+                      padding: EdgeInsets.all(5),
+                    )
                   ),
                 ),
-            ),
-          ],
+                Container(
+                  margin: EdgeInsets.only(left: 10, right:10),
+                  width: 400,
+                  child: OutlinedButton(
+                    onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => QuestionPage(title: 'Questionnaire')),
+                      );
+                    },
+                    child: Text(
+                      'Retake User Questionnaire',
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.notoSerif(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20,
+                        fontStyle: FontStyle.normal,
+                      ),
+                    ),
+                      style: OutlinedButton.styleFrom(
+                        primary: Colors.blueGrey[800],
+                        side: BorderSide(
+                          color: Colors.blueGrey,
+                        ),
+                        padding: EdgeInsets.all(5),
+                      )
+                  ),
+                ),
+              ]
+          ),
+            ]
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        ),
+      );// This trailing comma makes auto-formatting nicer for build methods.
   }
 }

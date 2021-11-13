@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'forgotpassword.dart';
+import 'main.dart';
 import 'startquestionaire.dart';
 
 class LoginPage extends StatefulWidget {
@@ -19,10 +22,7 @@ class _LoginState extends State<LoginPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(
 
-        title: Text(widget.title),
-      ),
       body: Center(
 
         child: Column(
@@ -33,9 +33,12 @@ class _LoginState extends State<LoginPage> {
               margin: EdgeInsets.all(10),
               child: Text(
                   'Login to Your Account',
-                  style: TextStyle(
-                    fontSize: 30,
-                  )
+                style: GoogleFonts.notoSerif(
+                fontWeight: FontWeight.w700,
+                fontSize: 30,
+                fontStyle: FontStyle.normal,
+                  color: Colors.blue[700],
+              ),
               ),
             ),
             Container(
@@ -47,6 +50,11 @@ class _LoginState extends State<LoginPage> {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Email',
+                ),
+                style: GoogleFonts.notoSerif(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 20,
+                  fontStyle: FontStyle.normal,
                 ),
               )
             ),
@@ -60,14 +68,19 @@ class _LoginState extends State<LoginPage> {
                     border: OutlineInputBorder(),
                     labelText: 'Password',
                   ),
+                  style: GoogleFonts.notoSerif(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 20,
+                    fontStyle: FontStyle.normal,
+                  ),
                 )
             ),
             Row(
               children: <Widget>[
               Container(
                 margin: EdgeInsets.only(left: 10, right:10),
-                width:180,
-                child: OutlineButton(
+                width:150,
+                child: OutlinedButton(
                   onPressed: () async{
                     await FirebaseAuth.instance.signInWithEmailAndPassword(
                         email: emailController.text, password: passwordController.text)
@@ -84,28 +97,79 @@ class _LoginState extends State<LoginPage> {
                   },
                   child: Text(
                     'Log In',
-                    style: TextStyle(
-                      fontSize: 15,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.notoSerif(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 20,
+                      fontStyle: FontStyle.normal,
                     ),
                   ),
+                    style: OutlinedButton.styleFrom(
+                      primary: Colors.blueGrey[800],
+                      side: BorderSide(
+                        color: Colors.blueGrey,
+                      ),
+                      padding: EdgeInsets.all(5),
+                    )
                 ),
               ),
                 Container(
-                  margin: EdgeInsets.only(left: 10, right:10),
-                  width:170,
-                  child: FlatButton(
+                  margin: EdgeInsets.only(left:2,right:10),
+                  width:210,
+                  child: OutlinedButton(
                     onPressed: (){
-
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ForgotPasswordPage(title: '')),
+                      );
                     },
                     child: Text(
                       'Forgot Password',
-                      style: TextStyle(
-                        fontSize: 13,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.notoSerif(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20,
+                        fontStyle: FontStyle.normal,
                       ),
                     ),
+                      style: OutlinedButton.styleFrom(
+                        primary: Colors.blueGrey[800],
+                        side: BorderSide(
+                          color: Colors.blueGrey,
+                        ),
+                        padding: EdgeInsets.all(5),
+                      )
                   ),
                 ),
              ]
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 10, right:10),
+              width:380,
+              child: OutlinedButton(
+                onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyHomePage(title: '')),
+                  );
+                },
+                child: Text(
+                  'Back',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.notoSerif(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 20,
+                    fontStyle: FontStyle.normal,
+                  ),
+                ),
+                  style: OutlinedButton.styleFrom(
+                    primary: Colors.blueGrey[800],
+                    side: BorderSide(
+                      color: Colors.blueGrey,
+                    ),
+                    padding: EdgeInsets.all(5),
+                  )
+              ),
             ),
           ],
         ),

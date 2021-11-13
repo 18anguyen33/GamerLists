@@ -22,47 +22,6 @@ class _PersonalInfoState extends State<PersonalInfoPage> {
             Container(
               margin: EdgeInsets.all(10),
               child: Text(
-                  'Change Your Username',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
-                  )
-              ),
-            ),
-            Row(
-              children: [
-                Container(
-                    margin: EdgeInsets.only(left: 10,right: 5),
-                    height:35,
-                    width:285,
-                    child: TextField(
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'New Username',
-                      ),
-                    )
-                ),
-                Container(
-                  margin: EdgeInsets.only(right:10),
-                  width:80,
-                  child: OutlineButton(
-                    onPressed: (){
-
-                    },
-                    child: Text(
-                      'Submit',
-                      style: TextStyle(
-                        fontSize: 15,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              child: Text(
                   'Change Your Password',
                   textAlign: TextAlign.center,
                   style: TextStyle(
